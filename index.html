@@ -1,1 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tough Lead Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #1a1c1a; }
 
+    /* ============================================================
+       STICKY WRAPPER
+    ============================================================ */
+    .tlm-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .tlm-header {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(to right, #7A9E70, #2C2E2B);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 40px 12px;
+      display: grid;
+      grid-template-columns: 80px 1fr 80px;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Logo */
+    .tlm-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      justify-self: start;
+      align-self: center;
+    }
+
+    .tlm-logo img {
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Center */
+    .tlm-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tlm-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.18);
+      display: block;
+      padding-bottom: 10px;
+    }
+
+    .tlm-caps {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .tlm-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      margin-top: 6px;
+    }
+
+    .tlm-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 5px 13px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      letter-spacing: 0.02em;
+    }
+
+    .tlm-nav a:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
+    .tlm-nav a.active { color: #ffffff; }
+
+    /* Right */
+    .tlm-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: end;
+      align-self: center;
+    }
+
+    .tlm-cta {
+      background: #ffffff;
+      color: #1C4220;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, transform 0.1s;
+      text-decoration: none;
+      white-space: nowrap;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tlm-cta:hover { background: #F0F0EE; transform: translateY(-1px); }
+    .tlm-cta:active { transform: scale(0.98); }
+
+    /* Burger */
+    .tlm-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      flex-shrink: 0;
+    }
+
+    .tlm-burger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .tlm-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .tlm-burger.open span:nth-child(2) { opacity: 0; }
+    .tlm-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .tlm-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: #2C2E2B;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 24px 20px;
+      z-index: 100;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tlm-drawer.open { display: flex; }
+
+    .tlm-drawer a {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: color 0.15s;
+    }
+
+    .tlm-drawer a:last-of-type { border-bottom: none; }
+    .tlm-drawer a:hover { color: #ffffff; }
+
+    /* ============================================================
+       BANNER
+    ============================================================ */
+    .tlm-banner {
+      background: #1C4220;
+      padding: 9px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tlm-banner-dot {
+      width: 6px;
+      height: 6px;
+      background: #7A9E70;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tlm-banner-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .tlm-banner-text span { color: #7A9E70; }
+
+    /* ============================================================
+       VIDEO SECTION
+    ============================================================ */
+    .tlm-video-section {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .tlm-video-section video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tlm-video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: #1a1c1a;
+      border: 2px dashed rgba(122,158,112,0.4);
+    }
+
+    .tlm-video-placeholder-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(122,158,112,0.15);
+      border: 2px solid rgba(122,158,112,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tlm-video-placeholder-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: #7A9E70;
+      margin-left: 4px;
+    }
+
+    .tlm-video-placeholder p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(122,158,112,0.7);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .tlm-video-placeholder small {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       REVIEWS / PORTFOLIO SECTION
+    ============================================================ */
+    .portfolio-section {
+      background: #1a1c1a;
+      padding: 64px 40px;
+    }
+
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .portfolio-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #7A9E70;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 42px;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+
+    .portfolio-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 8px;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: #232623;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .review-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(122,158,112,0.4);
+    }
+
+    .review-photo {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #2C3B2A, #1a2418);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 42px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.2);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .review-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .review-content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .review-stars svg {
+      width: 14px;
+      height: 14px;
+      fill: #7A9E70;
+    }
+
+    .review-quote {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .review-footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 12px;
+    }
+
+    .review-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .review-business {
+      font-size: 11px;
+      color: #7A9E70;
+      letter-spacing: 0.03em;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .tlm-header { padding: 12px 24px; grid-template-columns: 70px 1fr 70px; }
+      .tlm-script { font-size: 30px; }
+      .tlm-nav a { font-size: 12px; padding: 5px 9px; }
+      .tlm-logo img { height: 52px; }
+      .tlm-banner-text { font-size: 11px; letter-spacing: 0.12em; }
+      .portfolio-section { padding: 48px 24px; }
+    }
+
+    /* Mobile */
+    @media (max-width: 520px) {
+      .tlm-header { grid-template-columns: 48px 1fr auto; padding: 10px 14px; gap: 8px; }
+      .tlm-nav { display: none; }
+      .tlm-burger { display: flex; }
+      .tlm-script { font-size: 22px; padding-bottom: 5px; }
+      .tlm-caps { font-size: 8px; letter-spacing: 0.18em; }
+      .tlm-logo img { height: 42px; }
+      .tlm-cta { font-size: 11px; padding: 8px 11px; }
+      .tlm-banner { padding: 8px 16px; }
+      .tlm-banner-text { font-size: 9px; letter-spacing: 0.1em; }
+      .tlm-banner-dot { display: none; }
+      .tlm-video-section { aspect-ratio: 4 / 3; }
+      .cards-row { grid-template-columns: 1fr; }
+      .portfolio-section { padding: 40px 16px; }
+      .portfolio-title { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       STICKY: HEADER + BANNER
+  ============================================================ -->
+  <div class="tlm-sticky">
+
+    <header class="tlm-header">
+
+      <!-- Left: Logo -->
+      <a class="tlm-logo" href="#">
+        <!-- Replace with your logo path -->
+        <img src="logo.png" alt="Tough Lead Marketing" />
+      </a>
+
+      <!-- Center: Brand name + nav -->
+      <div class="tlm-center">
+        <span class="tlm-script">Tough Lead</span>
+        <span class="tlm-caps">Marketing</span>
+        <nav>
+          <ul class="tlm-nav">
+            <li><a href="#" class="active">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Right: CTA + burger -->
+      <div class="tlm-right">
+        <a class="tlm-cta" href="#">Get a Quote</a>
+        <button class="tlm-burger" id="burger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile drawer -->
+      <div class="tlm-drawer" id="drawer">
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+
+    </header>
+
+    <!-- Banner -->
+    <div class="tlm-banner">
+      <div class="tlm-banner-dot"></div>
+      <p class="tlm-banner-text"><span>AI-Powered</span> Marketing. Human-Driven Results.</p>
+      <div class="tlm-banner-dot"></div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       VIDEO SECTION
+  ============================================================ -->
+  <div class="tlm-video-section">
+    <!-- Replace src with your video file or URL when ready -->
+    <!-- <video autoplay muted loop playsinline src="your-video.mp4"></video> -->
+
+    <!-- Remove this placeholder once video is added -->
+    <div class="tlm-video-placeholder">
+      <div class="tlm-video-placeholder-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <p>Your video goes here</p>
+      <small>Autoplay · Muted · Looping · Full width</small>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       REVIEWS / PORTFOLIO SECTION
+  ============================================================ -->
+  <section class="portfolio-section">
+
+    <div class="portfolio-header">
+      <p class="portfolio-eyebrow">Our clients</p>
+      <h2 class="portfolio-title">Real Businesses. Real Results.</h2>
+      <p class="portfolio-subtitle">Local small businesses we've helped grow</p>
+    </div>
+
+    <div class="cards-row">
+
+      <!-- Card 1 — replace initials with <img> when you have a photo -->
+      <div class="review-card">
+        <div class="review-photo">JR</div>
+        <div class="review-content">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-quote">"Tough Lead completely transformed our online presence. We went from invisible to fully booked in under 3 months."</p>
+          <div class="review-footer">
+            <p class="review-name">James R.</p>
+            <p class="review-business">Riverside Plumbing Co.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 — replace initials with <img> when you have a photo -->
+      <div class="review-card">
+        <div class="review-photo">SM</div>
+        <div class="review-content">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-quote">"The aerial photography they did for our storefront was stunning. Our social media engagement tripled overnight. Worth every penny."</p>
+          <div class="review-footer">
+            <p class="review-name">Sarah M.</p>
+            <p class="review-business">Maple Street Bakery</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+    burger.addEventListener('click', function () {
+      burger.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

@@ -766,6 +766,91 @@
       .gallery-header { padding: 0 16px; }
     }
 
+    .portfolio-tagline-expand {
+      font-size: 14px;
+      color: var(--grey-mid);
+      max-width: 560px;
+      margin: 12px auto 0;
+      line-height: 1.8;
+      opacity: 0.75;
+      font-style: italic;
+    }
+
+    /* ============================================================
+       CALL NOW CTA
+    ============================================================ */
+    .portfolio-cta {
+      background: linear-gradient(to right, var(--sage), var(--grey-dark));
+      padding: 48px 40px;
+    }
+
+    .portfolio-cta-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .portfolio-cta-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+
+    .portfolio-cta-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-cta-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 480px;
+    }
+
+    .portfolio-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--green-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .portfolio-cta-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .portfolio-cta-btn:hover { background: #F0F0EE; transform: translateY(-2px); }
+    .portfolio-cta-btn:active { transform: scale(0.98); }
+
+    @media (max-width: 640px) {
+      .portfolio-cta { padding: 40px 16px; }
+      .portfolio-cta-inner { flex-direction: column; text-align: center; align-items: center; }
+      .portfolio-cta-title { font-size: 30px; }
+    }
+
   </style>
 </head>
 <body>
@@ -824,7 +909,7 @@
     <div class="portfolio-header">
       <p class="portfolio-eyebrow">Our Work</p>
       <h1 class="portfolio-title">Built to Perform</h1>
-      <p class="portfolio-subtitle">Real websites built for real local businesses — designed to rank, convert, and grow.</p>
+      <p class="portfolio-subtitle">AI-Powered Marketing. Human-Driven Results.</p>
     </div>
 
     <div class="portfolio-grid">
@@ -935,6 +1020,19 @@
 
     </div>
 
+  </section>
+
+  <!-- CALL NOW CTA -->
+  <section class="portfolio-cta">
+    <div class="portfolio-cta-inner">
+      <div class="portfolio-cta-text">
+        <p class="portfolio-cta-sub">We'd love to hear what you're working on. Give us a call during business hours and let's see what we can build together.</p>
+      </div>
+      <a class="portfolio-cta-btn" href="tel:+15550000000">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Now
+      </a>
+    </div>
   </section>
 
   <!-- PHOTOGRAPHY GALLERY -->

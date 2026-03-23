@@ -714,11 +714,18 @@
 
     .footer-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       gap: 24px;
       max-width: 700px;
       margin: 0 auto 14px;
+    }
+
+    .footer-logo img {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     .footer-left {
@@ -831,7 +838,8 @@
 
     @media (max-width: 520px) {
       .tlm-footer { padding: 20px 16px 12px; }
-      .footer-row { grid-template-columns: 1fr; justify-items: center; gap: 16px; }
+      .footer-row { grid-template-columns: 1fr 1fr; justify-items: center; gap: 16px; }
+      .footer-logo { display: none; }
       .footer-left { align-items: center; text-align: center; }
       .footer-social { align-items: center; }
     }
@@ -1162,6 +1170,10 @@
           Call Now
         </a>
       </div>
+
+      <a class="footer-logo" href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">
+        <img src="logo.png" alt="Tough Lead Marketing" />
+      </a>
 
       <div class="footer-social">
         <p class="footer-social-title">Follow Us</p>

@@ -1,1 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Tough Lead Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
 
+    /* ── Reset ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #D4DDD0; }
+
+    /* ── Colour tokens ── */
+    :root {
+      --sage:        #7A9E70;
+      --sage-mid:    #5A8A52;
+      --sage-dark:   #3A6634;
+      --sage-light:  #A8C4A0;
+      --sage-pale:   #E8EDE5;
+      --sage-muted:  #B8C9B4;
+      --sage-border: #8FAF85;
+      --page-bg:     #D4DDD0;
+      --green-dark:  #1C4220;
+      --grey-mid:    #2C3B2A;
+      --grey-dark:   #2C2E2B;
+      --white:       #F2F5F0;
+    }
+
+    /* ============================================================
+       STICKY WRAPPER
+    ============================================================ */
+    .tlm-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .tlm-header {
+      background: linear-gradient(to right, var(--sage), var(--grey-dark));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 40px 12px;
+      display: grid;
+      grid-template-columns: 80px 1fr 80px;
+      align-items: center;
+      position: relative;
+    }
+
+    .tlm-logo {
+      justify-self: start;
+      align-self: center;
+      text-decoration: none;
+    }
+
+    .tlm-logo img {
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .tlm-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tlm-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: #fff;
+      line-height: 1;
+      padding-bottom: 10px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.18);
+    }
+
+    .tlm-caps {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .tlm-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      margin-top: 6px;
+    }
+
+    .tlm-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 5px 13px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .tlm-nav a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .tlm-nav a.active { color: #fff; }
+
+    .tlm-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: end;
+      align-self: center;
+    }
+
+    .tlm-cta {
+      background: #fff;
+      color: var(--green-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .tlm-cta:hover { background: #F0F0EE; transform: translateY(-1px); }
+    .tlm-cta:active { transform: scale(0.98); }
+
+    .tlm-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .tlm-burger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .tlm-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .tlm-burger.open span:nth-child(2) { opacity: 0; }
+    .tlm-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .tlm-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: var(--grey-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 24px 20px;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 100;
+    }
+
+    .tlm-drawer.open { display: flex; }
+
+    .tlm-drawer a {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: color 0.15s;
+    }
+
+    .tlm-drawer a:last-of-type { border-bottom: none; }
+    .tlm-drawer a:hover { color: #fff; }
+
+    /* ============================================================
+       BANNER
+    ============================================================ */
+    .tlm-banner {
+      background: var(--green-dark);
+      padding: 9px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tlm-banner-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--sage);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tlm-banner-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .tlm-banner-text span { color: var(--sage); }
+
+    /* ============================================================
+       PORTFOLIO SECTION
+    ============================================================ */
+    .portfolio-section {
+      padding: 56px 40px 64px;
+      background: var(--page-bg);
+    }
+
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .portfolio-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage-mid);
+      margin-bottom: 8px;
+    }
+
+    .portfolio-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 44px;
+      color: var(--green-dark);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-subtitle {
+      font-size: 13px;
+      color: var(--grey-mid);
+      opacity: 0.65;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .portfolio-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .portfolio-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Card */
+    .p-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--sage-border);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .p-card:hover { transform: translateY(-3px); border-color: var(--sage-mid); }
+
+    /* Device showcase */
+    .p-devices {
+      background: linear-gradient(135deg, #2C3B2A, #1C4220);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .p-card.featured .p-devices { height: 300px; padding: 24px 40px 0; }
+    .p-card.small .p-devices { height: 180px; padding: 16px 24px 0; }
+
+    /* Desktop frame */
+    .device-desktop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .p-card.featured .device-desktop { width: 280px; }
+    .p-card.small .device-desktop { width: 170px; }
+
+    .desktop-screen {
+      background: #1a2418;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .p-card.featured .desktop-screen { height: 160px; }
+    .p-card.small .desktop-screen { height: 96px; }
+
+    .desktop-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
+    .desktop-bar {
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-top: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .p-card.featured .desktop-bar { height: 16px; }
+    .p-card.small .desktop-bar { height: 10px; }
+
+    .desktop-bar span {
+      display: block;
+      background: rgba(255,255,255,0.3);
+      border-radius: 2px;
+    }
+
+    .p-card.featured .desktop-bar span { width: 28px; height: 6px; }
+    .p-card.small .desktop-bar span { width: 18px; height: 4px; }
+
+    /* Mobile frame */
+    .device-mobile {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+      margin-left: -16px;
+      margin-bottom: -2px;
+    }
+
+    .p-card.featured .device-mobile { width: 72px; }
+    .p-card.small .device-mobile { width: 46px; }
+
+    .mobile-frame {
+      background: #111;
+      border: 2px solid rgba(255,255,255,0.25);
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .p-card.featured .mobile-frame { height: 126px; border-radius: 12px; }
+    .p-card.small .mobile-frame { height: 80px; border-radius: 8px; }
+
+    .mobile-notch {
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .p-card.featured .mobile-notch { height: 10px; }
+    .p-card.small .mobile-notch { height: 7px; }
+
+    .mobile-notch span {
+      display: block;
+      background: #333;
+      border-radius: 10px;
+    }
+
+    .p-card.featured .mobile-notch span { width: 20px; height: 4px; }
+    .p-card.small .mobile-notch span { width: 12px; height: 3px; }
+
+    .mobile-screen {
+      flex: 1;
+      background: #1a2418;
+      overflow: hidden;
+    }
+
+    .mobile-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
+    .screen-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.3;
+    }
+
+    .screen-placeholder svg {
+      stroke: #fff;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .p-card.featured .screen-placeholder svg { width: 20px; height: 20px; }
+    .p-card.small .screen-placeholder svg { width: 14px; height: 14px; }
+
+    /* Card content */
+    .p-content {
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--sage-border);
+    }
+
+    .p-info { flex: 1; }
+
+    .p-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+
+    .p-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .p-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(90,138,82,0.12);
+      color: var(--sage-mid);
+      border: 1px solid rgba(90,138,82,0.25);
+      border-radius: 4px;
+      padding: 3px 8px;
+    }
+
+    .p-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-dark);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 7px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .p-link:hover { background: var(--sage-dark); transform: translateY(-1px); }
+    .p-link svg { width: 10px; height: 10px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .tlm-footer {
+      background: linear-gradient(to right, var(--sage), var(--grey-dark));
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 40px 14px;
+    }
+
+    .footer-title { text-align: center; margin-bottom: 12px; }
+
+    .footer-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: #fff;
+      line-height: 1;
+      padding-bottom: 4px;
+      display: block;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .footer-caps {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 8px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .footer-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto 14px;
+    }
+
+    .footer-left { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+
+    .footer-hours-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2px;
+    }
+
+    .footer-hours { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+    .footer-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      background: #fff;
+      color: var(--green-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .footer-call:hover { background: #F0F0EE; }
+
+    .footer-call svg {
+      width: 11px; height: 11px;
+      stroke: var(--green-dark); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .footer-logo img { height: 72px; width: auto; object-fit: contain; display: block; }
+
+    .footer-social { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+
+    .footer-social-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .social-cluster { display: flex; gap: 8px; }
+
+    .social-icon {
+      width: 32px; height: 32px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .social-icon:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.35); }
+    .social-icon svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.8); }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .footer-copy { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .tlm-header { padding: 12px 24px; grid-template-columns: 70px 1fr 70px; }
+      .tlm-script { font-size: 30px; }
+      .tlm-nav a { font-size: 12px; padding: 5px 9px; }
+      .tlm-logo img { height: 52px; }
+      .tlm-banner-text { font-size: 11px; letter-spacing: 0.12em; }
+      .portfolio-section { padding: 40px 24px 48px; }
+      .tlm-footer { padding: 20px 24px 14px; }
+    }
+
+    @media (max-width: 520px) {
+      .tlm-header { grid-template-columns: 48px 1fr auto; padding: 10px 14px; gap: 8px; }
+      .tlm-nav { display: none; }
+      .tlm-burger { display: flex; }
+      .tlm-script { font-size: 22px; padding-bottom: 5px; }
+      .tlm-caps { font-size: 8px; letter-spacing: 0.18em; }
+      .tlm-logo img { height: 42px; }
+      .tlm-cta { font-size: 11px; padding: 8px 11px; }
+      .tlm-banner { padding: 8px 16px; }
+      .tlm-banner-text { font-size: 9px; letter-spacing: 0.1em; }
+      .tlm-banner-dot { display: none; }
+      .portfolio-section { padding: 32px 16px 40px; }
+      .portfolio-bottom { grid-template-columns: 1fr; }
+      .portfolio-title { font-size: 36px; }
+      .tlm-footer { padding: 20px 16px 12px; }
+      .footer-row { grid-template-columns: 1fr 1fr; justify-items: center; gap: 16px; }
+      .footer-logo { display: none; }
+      .footer-left { align-items: center; text-align: center; }
+      .footer-social { align-items: center; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- STICKY: HEADER + BANNER -->
+  <div class="tlm-sticky">
+
+    <header class="tlm-header">
+
+      <a class="tlm-logo" href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">
+        <img src="logo.png" alt="Tough Lead Marketing" />
+      </a>
+
+      <div class="tlm-center">
+        <span class="tlm-script">Tough Lead</span>
+        <span class="tlm-caps">Marketing</span>
+        <nav>
+          <ul class="tlm-nav">
+            <li><a href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/portfolio.html" class="active">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="tlm-right">
+        <a class="tlm-cta" href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/#consultation">Get a Quote</a>
+        <button class="tlm-burger" id="burger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="tlm-drawer" id="drawer">
+        <a href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/portfolio.html">Portfolio</a>
+        <a href="#">Contact</a>
+      </div>
+
+    </header>
+
+    <div class="tlm-banner">
+      <div class="tlm-banner-dot"></div>
+      <p class="tlm-banner-text"><span>AI-Powered</span> Marketing. Human-Driven Results.</p>
+      <div class="tlm-banner-dot"></div>
+    </div>
+
+  </div>
+
+  <!-- PORTFOLIO SECTION -->
+  <section class="portfolio-section">
+
+    <div class="portfolio-header">
+      <p class="portfolio-eyebrow">Our Work</p>
+      <h1 class="portfolio-title">Built to Perform</h1>
+      <p class="portfolio-subtitle">Real websites built for real local businesses — designed to rank, convert, and grow.</p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <!-- Featured card -->
+      <!-- Replace placeholder divs with <img src="..."> for desktop and mobile screenshots -->
+      <div class="p-card featured">
+        <div class="p-devices">
+          <div class="device-desktop">
+            <div class="desktop-screen">
+              <div class="screen-placeholder"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            </div>
+            <div class="desktop-bar"><span></span></div>
+          </div>
+          <div class="device-mobile">
+            <div class="mobile-frame">
+              <div class="mobile-notch"><span></span></div>
+              <div class="mobile-screen">
+                <div class="screen-placeholder"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-content">
+          <div class="p-info">
+            <p class="p-name">Client Business Name</p>
+            <div class="p-tags">
+              <span class="p-tag">Website Build</span>
+              <span class="p-tag">SEO</span>
+              <span class="p-tag">GEO</span>
+            </div>
+          </div>
+          <a class="p-link" href="#" target="_blank">
+            Visit Site
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Two smaller cards -->
+      <div class="portfolio-bottom">
+
+        <div class="p-card small">
+          <div class="p-devices">
+            <div class="device-desktop">
+              <div class="desktop-screen">
+                <div class="screen-placeholder"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+              </div>
+              <div class="desktop-bar"><span></span></div>
+            </div>
+            <div class="device-mobile">
+              <div class="mobile-frame">
+                <div class="mobile-notch"><span></span></div>
+                <div class="mobile-screen">
+                  <div class="screen-placeholder"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-content">
+            <div class="p-info">
+              <p class="p-name">Client Business Name</p>
+              <div class="p-tags">
+                <span class="p-tag">Website Build</span>
+                <span class="p-tag">Social Media</span>
+              </div>
+            </div>
+            <a class="p-link" href="#" target="_blank">
+              Visit Site
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="p-card small">
+          <div class="p-devices">
+            <div class="device-desktop">
+              <div class="desktop-screen">
+                <div class="screen-placeholder"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+              </div>
+              <div class="desktop-bar"><span></span></div>
+            </div>
+            <div class="device-mobile">
+              <div class="mobile-frame">
+                <div class="mobile-notch"><span></span></div>
+                <div class="mobile-screen">
+                  <div class="screen-placeholder"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-content">
+            <div class="p-info">
+              <p class="p-name">Client Business Name</p>
+              <div class="p-tags">
+                <span class="p-tag">Website Build</span>
+                <span class="p-tag">SEO</span>
+              </div>
+            </div>
+            <a class="p-link" href="#" target="_blank">
+              Visit Site
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="tlm-footer">
+
+    <div class="footer-title">
+      <span class="footer-script">Tough Lead</span>
+      <span class="footer-caps">Marketing</span>
+    </div>
+
+    <div class="footer-row">
+
+      <div class="footer-left">
+        <p class="footer-hours-title">Business Hours</p>
+        <p class="footer-hours">
+          Mon – Fri: 7:00am – 7:00pm<br>
+          Saturday: 10:00am – 1:00pm<br>
+          Sunday: Closed
+        </p>
+        <a class="footer-call" href="tel:+15550000000">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+
+      <a class="footer-logo" href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">
+        <img src="logo.png" alt="Tough Lead Marketing" />
+      </a>
+
+      <div class="footer-social">
+        <p class="footer-social-title">Follow Us</p>
+        <div class="social-cluster">
+          <a class="social-icon" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a class="social-icon" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a class="social-icon" href="#" aria-label="Substack">
+            <svg viewBox="0 0 24 24"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Tough Lead Marketing. All rights reserved.</p>
+    </div>
+
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

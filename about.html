@@ -8,11 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: #D4DDD0; }
-
     :root {
       --sage:        #7A9E70;
       --sage-mid:    #5A8A52;
@@ -27,12 +25,10 @@
       --grey-dark:   #2C2E2B;
       --white:       #F2F5F0;
     }
-
     /* ============================================================
        STICKY WRAPPER
     ============================================================ */
     .tlm-sticky { position: sticky; top: 0; z-index: 1000; }
-
     /* ============================================================
        HEADER
     ============================================================ */
@@ -45,28 +41,22 @@
       align-items: center;
       position: relative;
     }
-
     .tlm-logo { justify-self: start; align-self: center; text-decoration: none; }
     .tlm-logo img { height: 64px; width: auto; object-fit: contain; display: block; }
-
     .tlm-center { display: flex; flex-direction: column; align-items: center; }
-
     .tlm-script {
       font-family: 'Great Vibes', cursive;
       font-size: 38px; color: #fff; line-height: 1;
       padding-bottom: 10px;
       text-shadow: 0 1px 6px rgba(0,0,0,0.18);
     }
-
     .tlm-caps {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600; font-size: 10px;
       color: rgba(255,255,255,0.75);
       letter-spacing: 0.3em; text-transform: uppercase;
     }
-
     .tlm-nav { display: flex; align-items: center; gap: 2px; list-style: none; margin-top: 6px; }
-
     .tlm-nav a {
       font-size: 13px; font-weight: 500;
       color: rgba(255,255,255,0.7); text-decoration: none;
@@ -74,12 +64,9 @@
       letter-spacing: 0.02em;
       transition: color 0.15s, background 0.15s;
     }
-
     .tlm-nav a:hover { color: #fff; background: rgba(255,255,255,0.1); }
     .tlm-nav a.active { color: #fff; }
-
     .tlm-right { display: flex; align-items: center; gap: 10px; justify-self: end; align-self: center; }
-
     .tlm-cta {
       background: #fff; color: var(--green-dark);
       font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
@@ -87,33 +74,26 @@
       letter-spacing: 0.01em; text-decoration: none; white-space: nowrap;
       transition: background 0.15s, transform 0.1s;
     }
-
     .tlm-cta:hover { background: #F0F0EE; transform: translateY(-1px); }
     .tlm-cta:active { transform: scale(0.98); }
-
     .tlm-burger { display: none; flex-direction: column; gap: 5px; padding: 6px; background: none; border: none; cursor: pointer; flex-shrink: 0; }
     .tlm-burger span { display: block; width: 20px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.25s; }
     .tlm-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .tlm-burger.open span:nth-child(2) { opacity: 0; }
     .tlm-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
     .tlm-drawer {
       display: none; position: absolute; top: 100%; left: 0; right: 0;
       background: var(--grey-dark); border-bottom: 1px solid rgba(255,255,255,0.08);
       padding: 16px 24px 20px; flex-direction: column; gap: 4px; z-index: 100;
     }
-
     .tlm-drawer.open { display: flex; }
-
     .tlm-drawer a {
       font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.65);
       text-decoration: none; padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.15s;
     }
-
     .tlm-drawer a:last-of-type { border-bottom: none; }
     .tlm-drawer a:hover { color: #fff; }
-
     /* ============================================================
        BANNER
     ============================================================ */
@@ -121,16 +101,12 @@
       background: var(--green-dark); padding: 9px 24px;
       display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-
     .tlm-banner-dot { width: 6px; height: 6px; background: var(--sage); border-radius: 50%; flex-shrink: 0; }
-
     .tlm-banner-text {
       font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
       color: #fff; letter-spacing: 0.18em; text-transform: uppercase; text-align: center;
     }
-
     .tlm-banner-text span { color: var(--sage); }
-
     /* ============================================================
        PAGE HERO
     ============================================================ */
@@ -139,30 +115,25 @@
       padding: 72px 40px 64px;
       text-align: center;
     }
-
     .about-hero-eyebrow {
       font-family: 'Montserrat', sans-serif;
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.3em; text-transform: uppercase;
       color: rgba(255,255,255,0.6); margin-bottom: 12px;
     }
-
     .about-hero-title {
       font-family: 'Great Vibes', cursive;
       font-size: 56px; color: #fff;
       line-height: 1.1; margin-bottom: 16px;
       text-shadow: 0 2px 12px rgba(0,0,0,0.2);
     }
-
     .about-hero-tagline {
       font-family: 'Montserrat', sans-serif;
       font-size: 13px; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase;
       color: rgba(255,255,255,0.7);
     }
-
     .about-hero-tagline span { color: var(--sage-light); }
-
     /* ============================================================
        CONTENT SECTIONS
     ============================================================ */
@@ -170,34 +141,27 @@
       padding: 64px 40px;
       background: var(--page-bg);
     }
-
     .about-section.alt { background: var(--sage-muted); }
-
     .about-inner {
       max-width: 800px;
       margin: 0 auto;
     }
-
     .about-label {
       font-family: 'Montserrat', sans-serif;
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.25em; text-transform: uppercase;
       color: var(--sage-mid); margin-bottom: 10px;
     }
-
     .about-heading {
       font-family: 'Great Vibes', cursive;
       font-size: 40px; color: var(--green-dark);
       line-height: 1.1; margin-bottom: 20px;
     }
-
     .about-body {
       font-size: 15px; color: var(--grey-mid);
       line-height: 1.85; opacity: 0.9;
     }
-
     .about-body + .about-body { margin-top: 16px; }
-
     /* Two-col layout for mission + values */
     .about-two-col {
       display: grid;
@@ -206,25 +170,21 @@
       max-width: 900px;
       margin: 0 auto;
     }
-
     .about-col-label {
       font-family: 'Montserrat', sans-serif;
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.25em; text-transform: uppercase;
       color: var(--sage-mid); margin-bottom: 10px;
     }
-
     .about-col-heading {
       font-family: 'Great Vibes', cursive;
       font-size: 34px; color: var(--green-dark);
       line-height: 1.1; margin-bottom: 16px;
     }
-
     .about-col-body {
       font-size: 14px; color: var(--grey-mid);
       line-height: 1.85; opacity: 0.85;
     }
-
     /* Values list */
     .values-list {
       display: flex;
@@ -232,38 +192,32 @@
       gap: 16px;
       margin-top: 4px;
     }
-
     .value-item {
       display: flex;
       align-items: flex-start;
       gap: 14px;
     }
-
     .value-icon {
       width: 36px; height: 36px; border-radius: 8px;
       background: var(--green-dark);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-
     .value-icon svg {
       width: 16px; height: 16px;
       stroke: #fff; fill: none;
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
-
     .value-text-title {
       font-family: 'Montserrat', sans-serif;
       font-size: 11px; font-weight: 600;
       letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--green-dark); margin-bottom: 3px;
     }
-
     .value-text-body {
       font-size: 13px; color: var(--grey-mid);
       line-height: 1.7; opacity: 0.8;
     }
-
     /* Credential badge */
     .about-credential {
       display: inline-flex;
@@ -275,20 +229,68 @@
       padding: 10px 16px;
       margin-top: 20px;
     }
-
     .about-credential svg {
       width: 16px; height: 16px;
       stroke: var(--sage-mid); fill: none;
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
-
     .about-credential span {
       font-family: 'Montserrat', sans-serif;
       font-size: 10px; font-weight: 600;
       letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--green-dark);
     }
-
+    /* ============================================================
+       AI APPROACH GRID
+    ============================================================ */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .approach-card {
+      background: var(--white);
+      border: 1px solid var(--sage-border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .approach-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--sage-mid);
+    }
+    .approach-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--green-dark);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; flex-shrink: 0;
+    }
+    .approach-icon svg {
+      width: 18px; height: 18px;
+      stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .approach-sublabel {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--sage-mid); margin-bottom: 8px;
+    }
+    .approach-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; font-weight: 600;
+      color: var(--green-dark); margin-bottom: 10px;
+    }
+    .approach-body {
+      font-size: 13px; color: var(--grey-mid);
+      line-height: 1.75; opacity: 0.82;
+    }
+    @media (max-width: 640px) {
+      .approach-grid { grid-template-columns: 1fr; }
+    }
     /* ============================================================
        FOOTER
     ============================================================ */
@@ -297,20 +299,16 @@
       border-top: 1px solid rgba(255,255,255,0.08);
       padding: 20px 40px 14px;
     }
-
     .footer-title { text-align: center; margin-bottom: 12px; }
     .footer-script { font-family: 'Great Vibes', cursive; font-size: 28px; color: #fff; line-height: 1; padding-bottom: 4px; display: block; text-shadow: 0 1px 4px rgba(0,0,0,0.2); }
     .footer-caps { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 8px; color: rgba(255,255,255,0.6); letter-spacing: 0.28em; text-transform: uppercase; }
-
     .footer-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; max-width: 700px; margin: 0 auto 14px; }
     .footer-left { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
     .footer-hours-title { font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 2px; }
     .footer-hours { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.6; }
-
     .footer-call { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; background: #fff; color: var(--green-dark); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
     .footer-call:hover { background: #F0F0EE; }
     .footer-call svg { width: 11px; height: 11px; stroke: var(--green-dark); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
     .footer-logo img { height: 72px; width: auto; object-fit: contain; display: block; }
     .footer-social { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
     .footer-social-title { font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
@@ -320,74 +318,6 @@
     .social-icon svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.8); }
     .footer-bottom { text-align: center; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); max-width: 700px; margin: 0 auto; }
     .footer-copy { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
-
-    /* ============================================================
-       AI TOOLS GRID
-    ============================================================ */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .tool-card {
-      background: var(--white);
-      border: 1px solid var(--sage-border);
-      border-radius: 12px;
-      padding: 24px 16px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--sage-mid);
-    }
-
-    .tool-logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .tool-logo svg { width: 28px; height: 28px; }
-
-    .tool-chatgpt    { background: #10a37f; color: #fff; }
-    .tool-claude     { background: #cc785c; color: #fff; }
-    .tool-gemini     { background: #1a73e8; color: #fff; }
-    .tool-github     { background: #24292e; color: #fff; }
-    .tool-perplexity { background: #20808d; color: #fff; }
-    .tool-canva      { background: #00c4cc; color: #fff; }
-
-    .tool-name {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--green-dark);
-    }
-
-    .tool-desc {
-      font-size: 12px;
-      color: var(--grey-mid);
-      line-height: 1.6;
-      opacity: 0.75;
-      text-align: center;
-    }
-
-    @media (max-width: 640px) {
-      .tools-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
     /* ============================================================
        RESPONSIVE
     ============================================================ */
@@ -402,7 +332,6 @@
       .about-two-col { grid-template-columns: 1fr; gap: 40px; }
       .tlm-footer { padding: 20px 24px 14px; }
     }
-
     @media (max-width: 520px) {
       .tlm-header { grid-template-columns: 48px 1fr auto; padding: 10px 14px; gap: 8px; }
       .tlm-nav { display: none; }
@@ -423,20 +352,15 @@
       .footer-left { align-items: center; text-align: center; }
       .footer-social { align-items: center; }
     }
-
   </style>
 </head>
 <body>
-
   <!-- STICKY: HEADER + BANNER -->
   <div class="tlm-sticky">
-
     <header class="tlm-header">
-
       <a class="tlm-logo" href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">
         <img src="logo.png" alt="Tough Lead Marketing" />
       </a>
-
       <div class="tlm-center">
         <span class="tlm-script">Tough Lead</span>
         <span class="tlm-caps">Marketing</span>
@@ -450,14 +374,12 @@
           </ul>
         </nav>
       </div>
-
       <div class="tlm-right">
         <a class="tlm-cta" href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/#consultation">Get a Quote</a>
         <button class="tlm-burger" id="burger" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
-
       <div class="tlm-drawer" id="drawer">
         <a href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">Home</a>
         <a href="about.html">About</a>
@@ -465,15 +387,12 @@
         <a href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/portfolio.html">Portfolio</a>
         <a href="#">Contact</a>
       </div>
-
     </header>
-
     <div class="tlm-banner">
       <div class="tlm-banner-dot"></div>
       <p class="tlm-banner-text"><span>AI-Powered</span> Marketing. Human-Driven Results.</p>
       <div class="tlm-banner-dot"></div>
     </div>
-
   </div>
 
   <!-- PAGE HERO -->
@@ -500,20 +419,17 @@
   <!-- MISSION + VALUES -->
   <section class="about-section alt">
     <div class="about-two-col">
-
       <!-- Mission -->
       <div>
         <p class="about-col-label">Our Mission</p>
         <h2 class="about-col-heading">Leading Businesses Into the AI Era</h2>
         <p class="about-col-body">Our mission is straightforward — to guide local businesses into the age of AI with confidence. We lean on cutting-edge AI tools to drive smarter marketing, higher visibility, and better results. But we never lose sight of the human element. Technology powers our strategies; people make them matter. We believe the best outcomes happen when artificial intelligence and genuine human understanding work together.</p>
       </div>
-
       <!-- Values -->
       <div>
         <p class="about-col-label">Our Values</p>
         <h2 class="about-col-heading">What We Stand For</h2>
         <div class="values-list">
-
           <div class="value-item">
             <div class="value-icon">
               <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -523,7 +439,6 @@
               <p class="value-text-body">We bring full effort to every project. Your growth is our benchmark and we don't stop until we hit it.</p>
             </div>
           </div>
-
           <div class="value-item">
             <div class="value-icon">
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -533,7 +448,6 @@
               <p class="value-text-body">We treat every client relationship as a partnership. Your success is shared, and so is the effort behind it.</p>
             </div>
           </div>
-
           <div class="value-item">
             <div class="value-icon">
               <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -543,68 +457,53 @@
               <p class="value-text-body">No jargon, no runaround. We keep you informed every step of the way — clearly, honestly, and consistently.</p>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- AI TOOLS SECTION -->
+  <!-- AI APPROACH SECTION -->
   <section class="about-section">
     <div class="about-inner" style="text-align: center;">
-      <p class="about-label">Our Technology Stack</p>
-      <h2 class="about-heading">Powered by the Best AI Tools</h2>
-      <p class="about-body" style="max-width: 560px; margin: 0 auto 40px;">We build with the same AI tools shaping the future of the internet — so your business benefits from technology that's moving the needle right now. <a href="services.html" style="color: var(--sage-mid); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--sage-border);">See how we put these tools to work →</a></p>
+      <p class="about-label">How We Work</p>
+      <h2 class="about-heading">The AI-Powered Difference</h2>
+      <p class="about-body" style="max-width: 580px; margin: 0 auto 48px;">We don't rely on any single tool — we work across the leading AI platforms to find what drives the best result for each client. Here's how AI shapes every stage of what we do. <a href="services.html" style="color: var(--sage-mid); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--sage-border);">See how we put this to work →</a></p>
+      <div class="approach-grid">
 
-      <div class="tools-grid">
-
-        <div class="tool-card">
-          <div class="tool-logo tool-chatgpt">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.896zm16.597 3.855l-5.833-3.387 2.019-1.168a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.411-.663zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           </div>
-          <p class="tool-name">ChatGPT</p>
-          <p class="tool-desc">Content strategy, copywriting & AI search optimization</p>
+          <p class="approach-sublabel">Discovery & Research</p>
+          <p class="approach-title">Smarter insights, faster</p>
+          <p class="approach-body">We use AI to surface market trends, competitor positioning, and audience behavior that would take weeks to gather manually — giving your strategy a head start grounded in real data.</p>
         </div>
 
-        <div class="tool-card">
-          <div class="tool-logo tool-claude">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.304 1.273a.83.83 0 0 0-.79.576l-4.7 14.31a.83.83 0 0 0 1.581.52l4.7-14.31a.83.83 0 0 0-.791-1.096zM6.696 1.273a.83.83 0 0 0-.791 1.096l4.7 14.31a.83.83 0 1 0 1.581-.52L7.487 1.849a.83.83 0 0 0-.791-.576zM1.17 15.127a.83.83 0 0 0 0 1.66h14.81a.83.83 0 0 0 0-1.66H1.17zm6.866 5.846a.83.83 0 0 0 0 1.66h8.793a.83.83 0 0 0 0-1.66H8.036z"/></svg>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </div>
-          <p class="tool-name">Claude</p>
-          <p class="tool-desc">Deep research, strategy development & content refinement</p>
+          <p class="approach-sublabel">Content Creation</p>
+          <p class="approach-title">Built for humans, optimized for AI</p>
+          <p class="approach-body">Our content is written to engage real readers and rank in AI-powered search. Every piece is shaped with generative tools, then refined by human judgment to sound like your brand — not a machine.</p>
         </div>
 
-        <div class="tool-card">
-          <div class="tool-logo tool-gemini">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 24A14.304 14.304 0 0 0 0 12 14.304 14.304 0 0 0 12 0a14.305 14.305 0 0 0 12 12 14.305 14.305 0 0 0-12 12"/></svg>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <p class="tool-name">Gemini</p>
-          <p class="tool-desc">Google AI search visibility & AI Overview optimization</p>
+          <p class="approach-sublabel">Visibility & GEO</p>
+          <p class="approach-title">Found where it matters most</p>
+          <p class="approach-body">Generative Engine Optimization puts your business in front of AI-driven search results — not just Google, but the AI assistants your customers are already using to find and choose local services.</p>
         </div>
 
-        <div class="tool-card">
-          <div class="tool-logo tool-github">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           </div>
-          <p class="tool-name">GitHub Copilot</p>
-          <p class="tool-desc">AI-assisted website development & code optimization</p>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-logo tool-perplexity">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.075 11.754H13.24V2.894l-2.58 2.35V.283L5.904 5.009H.9v1.808h3.834L.9 10.265v1.49h2.344L.9 13.544v1.49l3.497-1.901v5.774h1.507v-6.66l5.756-3.128v2.635H3.232v1.808H12.068v3.95l2.584-2.354V21.724l4.752-4.717H24v-1.808h-3.847l3.922-3.445zm-7.327-5.956l-1.508 1.372V3.99zm-3.507 6.764H9.724L12.068 11v1.563zm7.52 6.267v-3.185L19.2 16.2zm-.588-.534l-3.544 3.518V15.13l1.895-1.725h1.649zm-1.894-4.127l-3.47 3.16-3.471-3.16V9.006h3.471l3.47 3.16zm3.994-1.08h-3.407l-3.544-3.228V8.128zm-4.994-3.228l-3.57 3.228H4.74v-.852L8.31 9.14h4.97zm-4.97 5.036H4.742v-.86l1.507 1.307V8.816l1.507 1.307v1.313z"/></svg>
-          </div>
-          <p class="tool-name">Perplexity AI</p>
-          <p class="tool-desc">GEO optimization for AI-powered search discovery</p>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-logo tool-canva">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248c-.483 0-.897.247-1.237.742-.34.495-.51 1.139-.51 1.93v.068c0 .795.17 1.44.51 1.933.34.494.754.741 1.237.741.495 0 .903-.181 1.225-.543.32-.362.481-.852.481-1.47v-.478c0-.617-.16-1.107-.481-1.47-.322-.362-.73-.453-1.225-.453zm-11.37.022c-.484 0-.895.247-1.234.742-.339.495-.508 1.139-.508 1.93v.068c0 .795.169 1.44.508 1.933.339.494.75.741 1.233.741.495 0 .903-.181 1.225-.543.321-.362.481-.852.481-1.47v-.478c0-.617-.16-1.107-.481-1.47-.322-.362-.73-.453-1.224-.453zm5.695-.09c-1.012 0-1.822.316-2.43.948-.609.632-.913 1.484-.913 2.556 0 1.071.304 1.923.913 2.555.608.632 1.418.948 2.43.948 1.013 0 1.822-.316 2.43-.948.608-.632.913-1.484.913-2.555 0-1.072-.305-1.924-.913-2.556-.608-.632-1.417-.948-2.43-.948z"/></svg>
-          </div>
-          <p class="tool-name">Canva</p>
-          <p class="tool-desc">AI-powered design & social media content creation</p>
+          <p class="approach-sublabel">Design & Delivery</p>
+          <p class="approach-title">Polished work, on your timeline</p>
+          <p class="approach-body">AI accelerates creative production — graphics, layouts, and campaign assets that would take days get done faster without sacrificing quality. You get more, without waiting longer.</p>
         </div>
 
       </div>
@@ -613,14 +512,11 @@
 
   <!-- FOOTER -->
   <footer class="tlm-footer">
-
     <div class="footer-title">
       <span class="footer-script">Tough Lead</span>
       <span class="footer-caps">Marketing</span>
     </div>
-
     <div class="footer-row">
-
       <div class="footer-left">
         <p class="footer-hours-title">Business Hours</p>
         <p class="footer-hours">
@@ -633,11 +529,9 @@
           Call Now
         </a>
       </div>
-
       <a class="footer-logo" href="https://toughleadmarketing.github.io/Tough-Lead-Marketing/">
         <img src="logo.png" alt="Tough Lead Marketing" />
       </a>
-
       <div class="footer-social">
         <p class="footer-social-title">Follow Us</p>
         <div class="social-cluster">
@@ -652,13 +546,10 @@
           </a>
         </div>
       </div>
-
     </div>
-
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 Tough Lead Marketing. All rights reserved.</p>
     </div>
-
   </footer>
 
   <script>
@@ -669,6 +560,5 @@
       drawer.classList.toggle('open');
     });
   </script>
-
 </body>
 </html>
